@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fixed navigation menu */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, #0066cc, #003366);
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        nav.scrolled {
+            background: linear-gradient(to right, #003366, #001a33);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        nav ul li:hover {
+            color: #ffcc00;
+        }
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .section-blue {
+            background: linear-gradient(to bottom right, #0066cc, #003366);
+        }
+
+        .section-green {
+            background: linear-gradient(to bottom right, #009933, #006600);
+        }
+
+        .section-purple {
+            background: linear-gradient(to bottom right, #9933cc, #660099);
+        }
+
+        .section-orange {
+            background: linear-gradient(to bottom right, #ff9933, #cc6600);
+        }
+
+        /* Circle with gradient */
+        .gradient-circle {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #0066cc, #003366);
+            border-radius: 50%;
+            margin: 20px auto;
+        }
+
+        /* Half circle with gradient */
+        .gradient-half-circle {
+            width: 200px;
+            height: 100px;
+            background: linear-gradient(to bottom, #0066cc, #003366);
+            border-top-left-radius: 200px;
+            border-top-right-radius: 200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<section class="section-blue">Home Section</section>
+<section class="section-green">About Section</section>
+<section class="section-purple">Services Section</section>
+<section class="section-orange">Contact Section</section>
+
+<div class="gradient-circle"></div>
+<div class="gradient-half-circle"></div>
+
+<script>
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    const navItems = document.querySelectorAll('nav ul li');
+
+    navItems.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            item.style.transform = 'scale(1.1)';
+        });
+
+        item.addEventListener('mouseout', () => {
+            item.style.transform = 'scale(1)';
+        });
+    });
+</script>
+
+</body>
+</html>
